@@ -1,0 +1,8 @@
+{
+  "scripts": {
+    "test:cloud": "cypress run --record"
+  },
+  "devDependencies": {
+    "cypress": "^16.1.0"
+  }
+}
