@@ -5,7 +5,10 @@ describe('Saucedemo - Swag Labs', () => {
 
     // CT01
     it('Verifica se loga com sucesso com usuário e senha válido', () => {
-      cy.fillLogin()
+      cy.fixture('usuarios').then((usuarios) => {
+        cy.fillLogin(usuarios.usuarioValido)
+      })
+      
 
       cy.url().should('include', '/inventory.html')
       cy.get('[data-test="inventory-item"]').should('have.length', 6)
@@ -13,9 +16,9 @@ describe('Saucedemo - Swag Labs', () => {
 
     // CT02
     it('Exibe mensagem de erro com usuario e/ou senha inválidos', () => {
-      cy.get('[data-test="username"]').type('standard_user')
-      cy.get('[data-test="password"]').type('secret_juice')
-      cy.get('[data-test="login-button"]').click()
+      cy.fixture('usuarios').then((usuarios) => {
+        cy.fillLogin(usuarios.usuarioInvalido)
+      })
 
       cy.get('[data-test="error"]')
         .should('be.visible')
@@ -24,7 +27,9 @@ describe('Saucedemo - Swag Labs', () => {
 
     //CT03
     it('Verifica fluxo de compras', () => {
-      cy.fillLogin()
+      cy.fixture('usuarios').then((usuarios) => {
+        cy.fillLogin(usuarios.usuarioValido)
+      })
 
       cy.get('[data-test="add-to-cart-sauce-labs-backpack"]').click()
       cy.get('[data-test="shopping-cart-link"]').click()
@@ -42,7 +47,9 @@ describe('Saucedemo - Swag Labs', () => {
 
     //CT04
     it('Verifica se desloga com sucesso e volta a página inicial', () => {
-      cy.fillLogin()
+      cy.fixture('usuarios').then((usuarios) => {
+        cy.fillLogin(usuarios.usuarioValido)
+      })
 
       cy.get('#react-burger-menu-btn').click()
       cy.get('[data-test="logout-sidebar-link"]').click()

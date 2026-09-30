@@ -1,5 +1,5 @@
-Cypress.Commands.add('fillLogin', () => {
-    cy.get('[data-test="username"]').type('standard_user')
-    cy.get('[data-test="password"]').type('secret_sauce')
+Cypress.Commands.add('fillLogin', (usuario) => {
+    cy.get('[data-test="username"]').type(usuario.username)
+    cy.get('[data-test="password"]').type(usuario.password)
     cy.get('[data-test="login-button"]').click()
 })
