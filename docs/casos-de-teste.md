@@ -9,7 +9,7 @@ Dado que insiro username válido
 E um password válido
 Quando clico em "Login"
 Então o sistema deve logar com sucesso
-E o usuário deve ser redirecionado para a página "Swag Labs"
+E o usuário deve ser redirecionado para a página de produtos
 
 ### Resultado esperado:
 O login deve ser realizado com sucesso e o usuário redirecionado para a página de itens.
@@ -26,7 +26,7 @@ Então o sistema não permite o login
 E deve ser exibida a mensagem "Epic sadface: Username and password do not match any user in this service"
 
 ### Resultado esperado:
-O login deve exbir uma mensagem de erro ao tentar realizar o login com credenciais inválidas.
+O login deve exibir uma mensagem de erro ao tentar realizar o login com credenciais inválidas.
 
 ## CT03 - Realiza compra:
 
