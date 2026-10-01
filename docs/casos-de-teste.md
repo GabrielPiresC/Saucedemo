@@ -28,6 +28,20 @@ E deve ser exibida a mensagem "Epic sadface: Username and password do not match 
 ### Resultado esperado:
 O login deve exibir uma mensagem de erro ao tentar realizar o login com credenciais inválidas.
 
+## CT02.2 - Login com credenciais inválidas:
+
+**Prioridade:** Alta
+**Criticidade:** Alta
+
+Dado que insiro username inválido
+E um password válido
+Quando clico em "Login"
+Então o sistema não permite o login
+E deve ser exibida a mensagem "Epic sadface: Username and password do not match any user in this service"
+
+### Resultado esperado:
+O login deve exibir uma mensagem de erro ao tentar realizar o login com credenciais inválidas.
+
 ## CT03 - Realiza compra:
 
 **Prioridade:** Alta

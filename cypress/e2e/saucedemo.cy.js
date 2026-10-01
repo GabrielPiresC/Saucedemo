@@ -15,9 +15,20 @@ describe('Saucedemo - Swag Labs', () => {
     })
 
     // CT02
-    it('Exibe mensagem de erro com usuario e/ou senha inválidos', () => {
+    it('Exibe mensagem de erro com senha inválida', () => {
       cy.fixture('usuarios').then((usuarios) => {
         cy.fillLogin(usuarios.usuarioInvalido)
+      })
+
+      cy.get('[data-test="error"]')
+        .should('be.visible')
+        .and('contain.text', 'Epic sadface: Username and password do not match any user in this service')
+    })
+
+    // CT02.2 
+    it('Exibe mensagem de erro com usuario inválido', () => {
+      cy.fixture('usuarios').then((usuarios) => {
+        cy.fillLogin(usuarios.usuarioInvalido2)
       })
 
       cy.get('[data-test="error"]')
@@ -34,9 +45,11 @@ describe('Saucedemo - Swag Labs', () => {
       cy.get('[data-test="add-to-cart-sauce-labs-backpack"]').click()
       cy.get('[data-test="shopping-cart-link"]').click()
       cy.get('[data-test="checkout"]').click()
-      cy.get('[data-test="firstName"]').type('Gabriel')
-      cy.get('[data-test="lastName"]').type('Pires')
-      cy.get('[data-test="postalCode"]').type('985625122')
+      
+      cy.fixture('checkout').then((checkout) => {
+        cy.dadosValidos(checkout.dadosValidos)
+      })
+
       cy.get('[data-test="continue"]').click()
       cy.get('[data-test="finish"]').click()
 
@@ -56,5 +69,4 @@ describe('Saucedemo - Swag Labs', () => {
 
       cy.get('[data-test="login-button"]').should('be.visible')
     })
-
 })
