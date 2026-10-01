@@ -47,7 +47,7 @@ describe('Saucedemo - Swag Labs', () => {
       cy.get('[data-test="checkout"]').click()
       
       cy.fixture('checkout').then((checkout) => {
-        cy.dadosValidos(checkout.dadosValidos)
+        cy.fillCheckout(checkout.dadosValidos)
       })
 
       cy.get('[data-test="continue"]').click()
